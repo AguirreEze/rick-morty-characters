@@ -1,5 +1,6 @@
 import CharactersDisplay from "@/components/CharactersDisplay";
 import CharacterEpisodes from "@/components/CharacterEpisodes";
+import SharedEpisodes from "@/components/SharedEpisodes";
 
 import styles from "./page.module.css";
 
@@ -19,7 +20,7 @@ export default function Home({ searchParams }: Iprops): JSX.Element {
         param="char2page"
       />
       <CharacterEpisodes list="char1" />
-      {/* <SharedEpisodes list="shared" /> */}
+      <SharedEpisodes />
       <CharacterEpisodes list="char2" />
     </main>
   );
