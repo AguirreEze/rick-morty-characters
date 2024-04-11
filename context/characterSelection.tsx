@@ -40,6 +40,8 @@ function reducer(state: TypeData, action: ActionType): TypeData {
   switch (action.type) {
     case "UPDATE_CHARACTER_1":
       return { ...state, char1: action.payload };
+    case "UPDATE_CHARACTER_2":
+      return { ...state, char2: action.payload };
     default:
       return state;
   }

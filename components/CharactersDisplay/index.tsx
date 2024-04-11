@@ -32,7 +32,7 @@ export default async function CharactersDisplay({
       <ul className={styles.list}>
         {data.results.map((character) => (
           <li key={character.id}>
-            <CharacterCard data={character} />
+            <CharacterCard data={character} param={param} />
           </li>
         ))}
       </ul>

@@ -8,13 +8,21 @@ import { CharacterSelection } from "@/context/characterSelection";
 
 interface Iprops {
   data: Character;
+  param: string;
 }
 
-export default function CharacterCard({ data }: Iprops): JSX.Element {
+export default function CharacterCard({ data, param }: Iprops): JSX.Element {
   const { dispatch } = useContext(CharacterSelection);
 
   function handleClick(): void {
-    dispatch({ type: "UPDATE_CHARACTER_1", payload: data });
+    switch (param) {
+      case "char1page":
+        dispatch({ type: "UPDATE_CHARACTER_1", payload: data });
+        break;
+      case "char2page":
+        dispatch({ type: "UPDATE_CHARACTER_2", payload: data });
+        break;
+    }
   }
 
   return (
