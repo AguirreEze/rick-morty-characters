@@ -1,8 +1,7 @@
 import CharactersDisplay from "@/components/CharactersDisplay";
-import CharacterEpisodes from "@/components/CharacterEpisodes";
-import SharedEpisodes from "@/components/SharedEpisodes";
 
 import styles from "./page.module.css";
+import { CharacterEpisodes, SharedEpisodes } from "@/components/EpisodeDisplay";
 
 interface Iprops {
   searchParams: Record<string, string>;
