@@ -12,7 +12,7 @@ interface Iprops {
 }
 
 export default function CharacterCard({ data, param }: Iprops): JSX.Element {
-  const { dispatch } = useContext(CharacterSelection);
+  const { data: selectedData, dispatch } = useContext(CharacterSelection);
 
   function handleClick(): void {
     switch (param) {
@@ -25,8 +25,24 @@ export default function CharacterCard({ data, param }: Iprops): JSX.Element {
     }
   }
 
+  function isSelectedCharacter(): boolean {
+    switch (param) {
+      case "char1page":
+        return selectedData.char1.id === data.id;
+      case "char2page":
+        return selectedData.char2.id === data.id;
+      default:
+        return false;
+    }
+  }
+
   return (
-    <article className={styles.container} onClick={handleClick}>
+    <article
+      className={`${styles.container} ${
+        isSelectedCharacter() && styles.selected
+      }`}
+      onClick={handleClick}
+    >
       <Image
         src={data.image}
         alt={data.name}
