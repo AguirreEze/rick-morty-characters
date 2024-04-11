@@ -1,5 +1,6 @@
 import CharacterCard from "../CharacterCard";
 
+import styles from "./styles.module.css";
 import type { CharactersResponse } from "@/types";
 
 export default async function CharactersDisplay(): Promise<JSX.Element> {
@@ -8,14 +9,14 @@ export default async function CharactersDisplay(): Promise<JSX.Element> {
   ).then(async (res) => await res.json());
 
   return (
-    <section>
-      <h1>Character #1</h1>
-      <nav>
-        <button>{"<"}</button>
+    <section className={styles.container}>
+      <h1 className={styles.title}>Character #1</h1>
+      <nav className={styles.nav}>
+        <button className={styles.button}>{"<"}</button>
         <span>1</span>
-        <button>{">"}</button>
+        <button className={styles.button}>{">"}</button>
       </nav>
-      <ul>
+      <ul className={styles.list}>
         {data.results.map((character) => (
           <li key={character.id}>
             <CharacterCard data={character} />
