@@ -12,6 +12,10 @@ export default function Home({ searchParams }: Iprops): JSX.Element {
         page={searchParams?.char1page ?? "1"}
         param="char1page"
       />
+      <CharactersDisplay
+        page={searchParams?.char2page ?? "1"}
+        param="char2page"
+      />
     </main>
   );
 }
