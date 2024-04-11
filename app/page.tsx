@@ -1,6 +1,7 @@
 import CharactersDisplay from "@/components/CharactersDisplay";
+import CharacterEpisodes from "@/components/CharacterEpisodes";
+
 import styles from "./page.module.css";
-import EpisodesDisplay from "@/components/EpisodeDisplay";
 
 interface Iprops {
   searchParams: Record<string, string>;
@@ -17,7 +18,9 @@ export default function Home({ searchParams }: Iprops): JSX.Element {
         page={searchParams?.char2page ?? "1"}
         param="char2page"
       />
-      <EpisodesDisplay />
+      <CharacterEpisodes list="char1" />
+      {/* <SharedEpisodes list="shared" /> */}
+      <CharacterEpisodes list="char2" />
     </main>
   );
 }

@@ -5,17 +5,21 @@ import { CharacterSelection } from "@/context/characterSelection";
 
 import styles from "./styles.module.css";
 
-export default function EpisodesDisplay(): JSX.Element {
+interface Iprops {
+  list: "char1" | "char2";
+}
+
+export default function CharacterEpisodes({ list }: Iprops): JSX.Element {
   const { data } = useContext(CharacterSelection);
 
   return (
     <section className={styles.container}>
       <h2>
-        {data.char1.name.length === 0 ? "Character #1" : data.char1.name} -
+        {data[list]?.name.length === 0 ? "Character #1" : data[list]?.name} -
         Episodes
       </h2>
       <ul className={styles.list}>
-        {data.char1.episode.map((url) => (
+        {data[list]?.episode.map((url) => (
           <li key={url}>
             <h3>{url}</h3>
           </li>
