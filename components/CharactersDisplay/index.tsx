@@ -1,3 +1,4 @@
+import { CHARACTER_TITLE } from "@/util/constants";
 import CharacterCard from "../CharacterCard";
 import PaginationButton from "../PaginationButton";
 
@@ -7,11 +8,13 @@ import type { CharactersResponse } from "@/types";
 interface Iprops {
   page: string;
   param: string;
+  character: "char1" | "char2";
 }
 
 export default async function CharactersDisplay({
   page,
   param,
+  character,
 }: Iprops): Promise<JSX.Element> {
   const data: CharactersResponse = await fetch(
     `https://rickandmortyapi.com/api/character/?page=${page}`
@@ -19,7 +22,7 @@ export default async function CharactersDisplay({
 
   return (
     <section className={styles.container}>
-      <h1 className={styles.title}>Character #1</h1>
+      <h1 className={styles.title}>{CHARACTER_TITLE[character]}</h1>
       <nav className={styles.nav}>
         <PaginationButton page={data.info.prev} param={param}>
           {"<"}

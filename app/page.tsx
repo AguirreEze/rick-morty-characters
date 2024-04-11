@@ -13,10 +13,12 @@ export default function Home({ searchParams }: Iprops): JSX.Element {
       <CharactersDisplay
         page={searchParams?.char1page ?? "1"}
         param="char1page"
+        character="char1"
       />
       <CharactersDisplay
         page={searchParams?.char2page ?? "1"}
         param="char2page"
+        character="char2"
       />
       <CharacterEpisodes list="char1" />
       <SharedEpisodes />

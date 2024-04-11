@@ -4,13 +4,9 @@ import { Suspense, useContext } from "react";
 import { CharacterSelection } from "@/context/characterSelection";
 import intersectArrays from "@/util/intercectArrays";
 import Episode from "../Episode";
+import { CHARACTER_TITLE } from "@/util/constants";
 
 import styles from "./styles.module.css";
-
-const CHARACTER_TITLE = {
-  char1: "Character #1",
-  char2: "Character #2",
-};
 
 interface Iprops {
   list: "char1" | "char2";
