@@ -6,6 +6,7 @@
   border: 1px solid #fafafa;
   border-radius: 0.5rem;
   padding: 0.5rem;
+  height: fit-content;
 }
 
 .title {
@@ -20,6 +21,8 @@
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-height: 60vh;
+  overflow: auto;
   gap: 0.5rem;
   list-style: none;
 }
