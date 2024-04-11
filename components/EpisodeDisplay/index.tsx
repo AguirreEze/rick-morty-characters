@@ -30,7 +30,7 @@ export function CharacterEpisodes({ list }: Iprops): JSX.Element {
       <ul className={styles.list}>
         <Suspense fallback="loading...">
           {data[list]?.episode.map((url) => (
-            <li key={url}>
+            <li key={`${list}-${url}`}>
               <Episode url={url} />
             </li>
           ))}
@@ -58,7 +58,7 @@ export function SharedEpisodes(): JSX.Element {
           <Suspense fallback="loading...">
             {intersectArrays(data.char1.episode, data.char2.episode).map(
               (url) => (
-                <li key={url}>
+                <li key={`shared-${url}`}>
                   <Episode url={url} />
                 </li>
               )
