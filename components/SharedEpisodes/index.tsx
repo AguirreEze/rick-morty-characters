@@ -1,10 +1,11 @@
 "use client";
 
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import { CharacterSelection } from "@/context/characterSelection";
+import Episode from "../Episode";
+import intersectArrays from "@/util/intercectArrays";
 
 import styles from "./styles.module.css";
-import intersectArrays from "@/util/intercectArrays";
 
 export default function SharedEpisodes(): JSX.Element {
   const { data } = useContext(CharacterSelection);
@@ -24,7 +25,9 @@ export default function SharedEpisodes(): JSX.Element {
           {intersectArrays(data.char1.episode, data.char2.episode).map(
             (url) => (
               <ul key={url}>
-                <h3>{url}</h3>
+                <Suspense>
+                  <Episode url={url} />
+                </Suspense>
               </ul>
             )
           )}
