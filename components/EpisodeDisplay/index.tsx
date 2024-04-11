@@ -28,13 +28,13 @@ export function CharacterEpisodes({ list }: Iprops): JSX.Element {
         - Episodes
       </h2>
       <ul className={styles.list}>
-        {data[list]?.episode.map((url) => (
-          <li key={url}>
-            <Suspense>
+        <Suspense fallback="loading...">
+          {data[list]?.episode.map((url) => (
+            <li key={url}>
               <Episode url={url} />
-            </Suspense>
-          </li>
-        ))}
+            </li>
+          ))}
+        </Suspense>
       </ul>
     </section>
   );
@@ -55,15 +55,15 @@ export function SharedEpisodes(): JSX.Element {
       <h2 className={styles.title}>Shared Episodes</h2>
       {bothCharacterSelected() ? (
         <ul className={styles.list}>
-          {intersectArrays(data.char1.episode, data.char2.episode).map(
-            (url) => (
-              <ul key={url}>
-                <Suspense>
+          <Suspense fallback="loading...">
+            {intersectArrays(data.char1.episode, data.char2.episode).map(
+              (url) => (
+                <li key={url}>
                   <Episode url={url} />
-                </Suspense>
-              </ul>
-            )
-          )}
+                </li>
+              )
+            )}
+          </Suspense>
         </ul>
       ) : (
         <></>
