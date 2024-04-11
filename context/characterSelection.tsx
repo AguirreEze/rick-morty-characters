@@ -6,6 +6,7 @@ import type { Character } from "@/types";
 import type { Dispatch } from "react";
 
 interface NoCharacter {
+  id: undefined;
   name: "";
   episode: [];
 }
@@ -20,21 +21,18 @@ interface ActionType {
   payload: Character;
 }
 
+const initialState: TypeData = {
+  char1: { name: "", id: undefined, episode: [] },
+  char2: { name: "", id: undefined, episode: [] },
+};
+
 export const CharacterSelection = createContext<{
   data: TypeData;
   dispatch: Dispatch<ActionType>;
 }>({
-  data: {
-    char1: { name: "", episode: [] },
-    char2: { name: "", episode: [] },
-  },
+  data: initialState,
   dispatch: () => [],
 });
-
-const initialState: TypeData = {
-  char1: { name: "", episode: [] },
-  char2: { name: "", episode: [] },
-};
 
 function reducer(state: TypeData, action: ActionType): TypeData {
   switch (action.type) {
