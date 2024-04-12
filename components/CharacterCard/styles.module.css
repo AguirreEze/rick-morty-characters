@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.container:hover {
+  background-color: #222;
+}
+
 .selected {
   background-color: #444;
 }
