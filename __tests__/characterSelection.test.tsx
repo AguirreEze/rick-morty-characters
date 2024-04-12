@@ -6,6 +6,11 @@ import CharacterSelectionProvider, {
 import { useContext, useEffect } from "react";
 import { CharacterMock } from "../mocks/DataMock";
 
+interface TestProps {
+  type: "UPDATE_CHARACTER_1" | "UPDATE_CHARACTER_2" | "UPDATE";
+  char: "char1" | "char2";
+}
+
 function TestingComponent(): JSX.Element {
   const { data } = useContext(CharacterSelection);
   return (
@@ -15,42 +20,17 @@ function TestingComponent(): JSX.Element {
     </>
   );
 }
-function TestingComponentWithDispatch(): JSX.Element {
-  const { data, dispatch } = useContext(CharacterSelection);
-  useEffect(() => {
-    dispatch({ type: "UPDATE_CHARACTER_1", payload: CharacterMock });
-  }, []);
-  return (
-    <>
-      <p data-testid="name">{data.char1.name}</p>
-      <p data-testid="id">{data.char1.id}</p>
-    </>
-  );
-}
 
-function TestingComponentWithDispatch2(): JSX.Element {
-  const { data, dispatch } = useContext(CharacterSelection);
-  useEffect(() => {
-    dispatch({ type: "UPDATE_CHARACTER_2", payload: CharacterMock });
-  }, []);
-  return (
-    <>
-      <p data-testid="name">{data.char2.name}</p>
-      <p data-testid="id">{data.char2.id}</p>
-    </>
-  );
-}
-
-function TestingComponentWithWrongDispatch(): JSX.Element {
+function TestingComponentWithDispatch({ type, char }: TestProps): JSX.Element {
   const { data, dispatch } = useContext(CharacterSelection);
   useEffect(() => {
     // @ts-expect-error This is used only for testing.
-    dispatch({ type: "UPDATE_CHARACTER", payload: CharacterMock.data });
+    dispatch({ type, payload: CharacterMock });
   }, []);
   return (
     <>
-      <p data-testid="name">{data.char2.name}</p>
-      <p data-testid="id">{data.char2.id}</p>
+      <p data-testid="name">{data[char].name}</p>
+      <p data-testid="id">{data[char].id}</p>
     </>
   );
 }
@@ -82,7 +62,10 @@ describe("CharacterSelection context without dispatch ", () => {
     it("renders correct name", () => {
       render(
         <CharacterSelectionProvider>
-          <TestingComponentWithDispatch />
+          <TestingComponentWithDispatch
+            type="UPDATE_CHARACTER_1"
+            char="char1"
+          />
         </CharacterSelectionProvider>
       );
 
@@ -93,7 +76,10 @@ describe("CharacterSelection context without dispatch ", () => {
     it("renders correct id", () => {
       render(
         <CharacterSelectionProvider>
-          <TestingComponentWithDispatch />
+          <TestingComponentWithDispatch
+            type="UPDATE_CHARACTER_1"
+            char="char1"
+          />
         </CharacterSelectionProvider>
       );
 
@@ -106,7 +92,10 @@ describe("CharacterSelection context without dispatch ", () => {
     it("renders correct name", () => {
       render(
         <CharacterSelectionProvider>
-          <TestingComponentWithDispatch2 />
+          <TestingComponentWithDispatch
+            type="UPDATE_CHARACTER_2"
+            char="char2"
+          />
         </CharacterSelectionProvider>
       );
 
@@ -117,7 +106,10 @@ describe("CharacterSelection context without dispatch ", () => {
     it("renders correct id", () => {
       render(
         <CharacterSelectionProvider>
-          <TestingComponentWithDispatch2 />
+          <TestingComponentWithDispatch
+            type="UPDATE_CHARACTER_2"
+            char="char2"
+          />
         </CharacterSelectionProvider>
       );
 
@@ -130,7 +122,7 @@ describe("CharacterSelection context without dispatch ", () => {
     it("renders a empty name", () => {
       render(
         <CharacterSelectionProvider>
-          <TestingComponentWithWrongDispatch />
+          <TestingComponentWithDispatch type="UPDATE" char="char1" />
         </CharacterSelectionProvider>
       );
 
@@ -141,7 +133,7 @@ describe("CharacterSelection context without dispatch ", () => {
     it("renders a empty id", () => {
       render(
         <CharacterSelectionProvider>
-          <TestingComponentWithWrongDispatch />
+          <TestingComponentWithDispatch type="UPDATE" char="char1" />
         </CharacterSelectionProvider>
       );
 
