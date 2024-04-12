@@ -1,6 +1,15 @@
-import { CharacterEpisodes } from "@/components/EpisodeDisplay";
+import { CharacterEpisodes, SharedEpisodes } from "@/components/EpisodeDisplay";
+// import CharacterSelectionProvider, {
+//   CharacterSelection,
+// } from "@/context/characterSelection";
+// import { CharacterMock, EpisodeMock } from "@/mocks/DataMock";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
+// import { useContext, useEffect } from "react";
+// import fetchMock from "jest-fetch-mock";
+// import resolvedComponent from "@/util/resolvedComponent";
+
+// fetchMock.enableMocks();
 
 // function TestDispatchOnCharacter1(): JSX.Element {
 //   const { dispatch } = useContext(CharacterSelection);
@@ -37,17 +46,24 @@ describe("EpisodeDisplay renders", () => {
       expect(heading.innerHTML).toEqual("Character #1 - Episodes");
     });
     //  NextJs Server components not yet supported on Jest
-    //   it("heading includes the correct text after selecting a character", () => {
-    //     render(
-    //       <CharacterSelectionProvider>
-    //         <TestDispatchOnCharacter1 />
-    //         <CharacterEpisodes list="char1" />
-    //       </CharacterSelectionProvider>
-    //     );
-    //     const heading = screen.getByRole("heading", { level: 2 });
+    // it("heading includes the correct text after selecting a character", async () => {
+    //   fetch.mockResponse(JSON.stringify(EpisodeMock));
+    //   const ResolvedDisplay = await resolvedComponent(
+    //     CharacterSelectionProvider({ children: CharacterEpisodes }),
+    //     {
+    //       list: "char1",
+    //     }
+    //   );
+    //   render(
+    //     <CharacterSelectionProvider>
+    //       <TestDispatchOnCharacter1 />
+    //       <ResolvedDisplay />
+    //     </CharacterSelectionProvider>
+    //   );
+    //   const heading = screen.getByRole("heading", { level: 2 });
 
-    //     expect(heading.innerHTML).toEqual("Character #1 - Episodes");
-    //   });
+    //   expect(heading.innerHTML).toEqual("Character #1 - Episodes");
+    // });
   });
   describe("EpisodeDisplay component for Character 2", () => {
     it("heading includes the correct text", () => {
@@ -56,6 +72,15 @@ describe("EpisodeDisplay renders", () => {
       const heading = screen.getByRole("heading", { level: 2 });
 
       expect(heading.innerHTML).toEqual("Character #2 - Episodes");
+    });
+  });
+  describe("SharedDisplay component", () => {
+    it("heading includes the correct text", () => {
+      render(<SharedEpisodes />);
+
+      const heading = screen.getByRole("heading", { level: 2 });
+
+      expect(heading.innerHTML).toEqual("Shared Episodes");
     });
   });
 });
