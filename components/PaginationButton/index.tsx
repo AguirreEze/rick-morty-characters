@@ -5,7 +5,7 @@ import styles from "./styles.module.css";
 
 interface Iprops {
   page: string | null;
-  param: string;
+  param: "char1page" | "char2page";
   children: string;
 }
 

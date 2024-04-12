@@ -7,7 +7,7 @@ import type { CharactersResponse } from "@/types";
 
 interface Iprops {
   page: string;
-  param: string;
+  param: "char1page" | "char2page";
   character: "char1" | "char2";
 }
 
