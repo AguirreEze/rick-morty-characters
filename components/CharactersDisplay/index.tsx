@@ -24,11 +24,11 @@ export default async function CharactersDisplay({
     <section className={styles.container}>
       <h1 className={styles.title}>{CHARACTER_TITLE[character]}</h1>
       <nav className={styles.nav}>
-        <PaginationButton page={data.info.prev} param={param}>
+        <PaginationButton url={data.info.prev} param={param}>
           {"<"}
         </PaginationButton>
         <span>{page}</span>
-        <PaginationButton page={data.info.next} param={param}>
+        <PaginationButton url={data.info.next} param={param}>
           {">"}
         </PaginationButton>
       </nav>

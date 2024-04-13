@@ -4,14 +4,14 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./styles.module.css";
 
 interface Iprops {
-  page: string | null;
+  url: string | null;
   param: "char1page" | "char2page";
   children: string;
 }
 
 export default function PaginationButton({
   children,
-  page,
+  url,
   param,
 }: Iprops): JSX.Element {
   const searchParams = useSearchParams();
@@ -19,9 +19,9 @@ export default function PaginationButton({
   const router = useRouter();
 
   function handleClick(): void {
-    if (typeof page === "string") {
+    if (typeof url === "string") {
       const params = new URLSearchParams(searchParams);
-      params.set(param, page?.replace(/.*\?page=/, ""));
+      params.set(param, url?.replace(/.*\?page=/, ""));
 
       router.replace(pathname + "?" + params.toString());
     }
@@ -30,7 +30,7 @@ export default function PaginationButton({
   return (
     <button
       className={styles.button}
-      disabled={page === null}
+      disabled={url === null}
       onClick={handleClick}
     >
       {children}
