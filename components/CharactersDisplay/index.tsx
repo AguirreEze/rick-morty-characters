@@ -1,6 +1,7 @@
 import { CHARACTER_TITLE } from "@/util/constants";
 import CharacterCard from "../CharacterCard";
 import PaginationButton from "../PaginationButton";
+import PageNumberDisplay from "../PageNumberDisplay";
 
 import styles from "./styles.module.css";
 import type { CharactersResponse } from "@/types";
@@ -39,7 +40,11 @@ export default async function CharactersDisplay({
         <PaginationButton url={data.info?.prev} param={param}>
           {"<"}
         </PaginationButton>
-        <span>{isPageValidValue(page)}</span>
+        <PageNumberDisplay
+          page={isPageValidValue(page)}
+          param={param}
+          lastPage={data.info?.pages}
+        />
         <PaginationButton url={data.info?.next} param={param}>
           {">"}
         </PaginationButton>

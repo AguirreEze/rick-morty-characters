@@ -1,0 +1,33 @@
+.form {
+  height: 100%;
+}
+.input {
+  height: 100%;
+  width: 10rem;
+  border: 1px solid #aaa;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 0.3rem;
+}
+.button {
+  display: none;
+  height: 100%;
+  width: 3rem;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  border: 1px solid #aaa;
+  background-color: transparent;
+}
+
+.form:hover > .input,
+.input:focus {
+  width: 7rem;
+  background-color: field;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form:hover > .button,
+.input:focus ~ .button {
+  display: inline-block;
+}
