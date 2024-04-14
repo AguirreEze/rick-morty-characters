@@ -19,6 +19,7 @@
   border-bottom-right-radius: 0.3rem;
   border: 1px solid #aaa;
   background-color: transparent;
+  font-size: 16px;
 }
 
 .form:hover > .input,

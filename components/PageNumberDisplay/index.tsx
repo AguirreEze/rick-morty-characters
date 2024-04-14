@@ -42,7 +42,7 @@ export default function PageNumberDisplay({
         max={lastPage}
       />
       <button type="submit" className={styles.button}>
-        ok
+        ↵
       </button>
     </form>
   );
