@@ -15,6 +15,7 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  height: 1.5rem;
 }
 
 .list {
@@ -24,4 +25,10 @@
   overflow: auto;
   gap: 0.5rem;
   list-style: none;
+}
+@media (max-width: 700px) {
+  .nav {
+    height: 2.5rem;
+    gap: 0.5rem;
+  }
 }
